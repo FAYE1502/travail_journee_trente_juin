@@ -38,3 +38,51 @@ $categories = [
          echo $categorie["nom"]."\n";
     }
  }
+
+ // 3.
+
+  $codeEstValide = true;
+    
+   do { 
+        
+        $code = readline("saisir le code :");
+        if (empty($code)) {
+            echo "le code est obligatoire \n";
+             $codeEstValide = false;
+        }else{
+            foreach ($categories as  $categorie ) {
+               if (($categorie["code"]) === $code) {
+                $codeEstValide = false;
+                echo "le code existe deja ...\n"; 
+         }
+       }  
+}
+        
+    } while (!$codeEstValide);
+    
+     $nomEstValide = true;
+  do { 
+        
+        $nom = readline("saisir le nom : ");
+        if (empty($nom)) {
+            echo "le nom est obligatoire";
+             $nomEstValide = false;
+        }else{
+            foreach ($categories as  $categorie ) {
+               if (($categorie["nom"]) === $nom) {
+                $nomEstValide = false;
+                echo "le nom existe deja ..."; 
+         }
+       }  
+}
+    } while (!$nomEstValide);
+
+
+
+    $categorie  =   [
+            "code" => $code,
+            "nom" => $nom,
+            "produits" => []
+         ];
+
+         $categories[] = $categorie;
